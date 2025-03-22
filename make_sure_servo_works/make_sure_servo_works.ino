@@ -1,4 +1,4 @@
-#include <ESP32Servo.h>  // Use ESP32Servo instead of Servo.h MP Test!
+#include <ESP32Servo.h>  // Use ESP32Servo instead of Servo.h
 
 
 Servo myServo;  // Create servo object
