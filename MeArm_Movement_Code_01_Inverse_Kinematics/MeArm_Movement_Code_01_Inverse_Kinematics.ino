@@ -15,8 +15,8 @@
 #include <ESP32Servo.h>  // Use ESP32Servo instead of Servo.h
 
 int basePin = 2;
-int shoulderPin = 4;
-int elbowPin = 16;
+int shoulderPin = 4; // Left
+int elbowPin = 16; // Right
 int clawPin = 15;
 
 /*
