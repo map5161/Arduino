@@ -21,7 +21,7 @@
  *      6                                                   Yellow
  */
 #include "MeArm.h"
-#include <Servo.h>
+#include <ESP32Servo.h>  // Use ESP32Servo instead of Servo.h
 
 int basePin = 11;
 int shoulderPin = 10;

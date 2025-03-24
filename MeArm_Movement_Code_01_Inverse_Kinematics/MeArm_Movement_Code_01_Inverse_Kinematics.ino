@@ -11,13 +11,13 @@
  *      9                     Yellow
  *      6                               Yellow
  */
-#include "MeArm.h"
-#include <Servo.h>
+#include <MeArm.h>
+#include <ESP32Servo.h>  // Use ESP32Servo instead of Servo.h
 
-int basePin = 11;
-int shoulderPin = 10;
-int elbowPin = 9;
-int clawPin = 6;
+int basePin = 2;
+int shoulderPin = 4;
+int elbowPin = 16;
+int clawPin = 15;
 
 /*
 //ESP8266 MeArm Wifi PCB
