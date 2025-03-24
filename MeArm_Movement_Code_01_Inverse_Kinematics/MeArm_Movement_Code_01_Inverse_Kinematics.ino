@@ -19,18 +19,26 @@ int shoulderPin = 4; // Left
 int elbowPin = 16; // Right
 int clawPin = 15;
 
-/*
-//ESP8266 MeArm Wifi PCB
-int basePin = 16;
-int shoulderPin = 14;
-int elbowPin = 12;
-int clawPin = 13;
-*/
-
 MeArm arm;
 
 void setup() {
   arm.begin(basePin, shoulderPin, elbowPin, clawPin);
+
+    // Initialize arm to a known position (e.g., 0, 100, 50)
+  arm.moveToXYZ(0, 100, 50);  // Starting position
+  delay(1000);  // Delay to ensure arm reaches the start position before moving further
+}
+
+// Function to gradually move between two points
+void smoothMove(float xStart, float yStart, float zStart, float xEnd, float yEnd, float zEnd, int steps, int delayTime) {
+  float stepX = (xEnd - xStart) / steps;
+  float stepY = (yEnd - yStart) / steps;
+  float stepZ = (zEnd - zStart) / steps;
+
+  for (int i = 0; i <= steps; i++) {
+    arm.moveToXYZ(xStart + (stepX * i), yStart + (stepY * i), zStart + (stepZ * i));
+    delay(delayTime);
+  }
 }
 
 void loop() {
@@ -41,13 +49,16 @@ void loop() {
   arm.closeClaw();
   arm.openClaw();
   delay(500);
-  //Go up and left to grab something
-  arm.moveToXYZ(-80,100,140); 
+  
+  // Move gradually in 20 steps with 30ms delay per step
+  smoothMove(0, 100, 50, -80, 100, 140, 20, 50);  
   arm.closeClaw();
-  //Go down, forward and right to drop it
-  arm.moveToXYZ(70,200,10);
+  delay(500);
+  
+  smoothMove(-80, 100, 140, 70, 200, 10, 25, 40);  
   arm.openClaw();
-  //Back to start position
-  arm.moveToXYZ(0,100,50);
+  delay(500);
+  
+  smoothMove(70, 200, 10, 0, 100, 50, 20, 30);  
   delay(2000);
 }

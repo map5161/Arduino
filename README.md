@@ -1,1 +1,2 @@
 # Arduino
+# I'm not sure if this was captured elsewhere: after dowloading the MeArm-Arduino-master.zip file, I then imported it into my Arduino library.  This library is not in my github folder/repo.  The library was at the file path C:\Users\map51\OneDrive\Documents\Arduino\libraries.  I had to go into the MeArm.h file and replace mentions of Servo.h with ESP32Servo.h   I had to do the same thing in the MeArm.cpp file.
